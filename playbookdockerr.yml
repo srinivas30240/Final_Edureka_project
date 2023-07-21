@@ -20,9 +20,8 @@
   - name: create container
     command: docker run -itd -P myadd:ansible2
   - name: Login to Docker Hub
-      docker_login:
-        username: sri33
-        password: Srinivas36*
-
-    - name: Push Docker image to Docker Hub
-      command: docker push sri33/myapp:latest
+    docker_login:
+      username: sri33
+      password: Srinivas36*
+  - name: Push Docker image to Docker Hub
+    command: docker push sri33/myapp:latest

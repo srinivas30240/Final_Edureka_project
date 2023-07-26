@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
        - name: app
-         image: sri33/edureka:abctech 
+         image: sri33/edureka:abctech1
         
 ---
 kind: Service

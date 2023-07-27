@@ -1,31 +1,41 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: kubeserve
+    name: abctechnologies-dep
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: kubeserve
-  template:
-    metadata:
-      name: kubeserve
-      labels:
-        app: kubeserve
-    spec:
-      containers:
-       - name: app
-         image: sri33/edureka:abctech1
-        
+    replicas: 2
+    minReadySeconds: 45
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxUnavailable: 1
+            maxSurge: 2
+    selector:
+        matchLabels:
+            app: abc-tech-app
+    template:
+        metadata:
+            labels:
+                app: abc-tech-app
+        spec:
+            containers:
+                - image: sri33/edureka:abctech1
+                  name: app
 ---
+
 kind: Service
 apiVersion: v1
 metadata:
-   name: kubeserve-svc
+    name: abc-tech-service
 spec:
-  type: NodePort
-  ports:
-    - port: 80
-      targetPort: 80
-  selector: 
-    app: kubeserve
+    type: NodePort
+    selector:
+        app: abc-tech-app
+    ports:
+        - port: 80 #cluster port
+          targetPort: 8080 #container image port
+
+
+
+
+

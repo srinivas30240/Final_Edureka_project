@@ -19,7 +19,7 @@ spec:
                 app: abc-tech-app
         spec:
             containers:
-                - image: sri33/edureka:abctech1
+                - image: sri33/edureka:abcimage2
                   name: app
 ---
 
